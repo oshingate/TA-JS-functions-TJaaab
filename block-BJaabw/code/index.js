@@ -11,13 +11,15 @@ minToSec(2) ➞ 120
 */
 
 // - Write a Function Decleration for above problem
-function minToSec() {
+function minToSec(minutes) {
   // Your code
+  return minutes * 60;
 }
 // - Execute the function with required parameter
 
 /* 2. 
-Create a function named isInRange which validates whether a number n is exclusively within the bounds of lower and upper.
+Create a function named isInRange which validates whether a number n is exclusively within 
+the bounds of lower and upper.
 Return true and false based on that.
 
 The function accepts three parameter lower, upper and the number.
@@ -26,8 +28,13 @@ isInRange(1, 10, 19); // false
 */
 
 // - Write a Function Decleration for above problem
-function isInRange() {
+function isInRange(lower = required("lower"), upper = required("upper"), n) {
   // Your code
+  if (n >= lower && n <= upper) {
+    return true;
+  } else {
+    return false;
+  }
 }
 // - Execute the function with required parameter
 
@@ -36,7 +43,8 @@ function isInRange() {
 
 Take two arguments weight and height and return `Underweight`, `Normal` etc based on data.
 
-Body mass index(BMI) is calculated as follows: bmi = weight / (height x height). Write a function which calculates bmi.
+Body mass index(BMI) is calculated as follows: bmi = weight / (height x height). Write a function 
+which calculates bmi.
 BMI is used to broadly define different weight groups.
 Check if a person is underweight, normal, overweight or obese based the information given below.
 
@@ -49,8 +57,22 @@ Obese: BMI is 30 or more
 
 */
 
-function calculateBMI() {
+function calculateBMI(weight, height) {
   // Your code
+  let bmi = weight / (height * height);
+  switch (true) {
+    case bmi < 18.5:
+      return `Underweight`;
+      break;
+    case bmi >= 18.5 && bmi <= 24.9:
+      return `Normal weight`;
+      break;
+    case bmi >= 25 && bmi <= 29.9:
+      return `Overweight`;
+      break;
+    default:
+      return `Obese`;
+  }
 }
 
 /* 3. appropiateDrinks
@@ -64,14 +86,30 @@ Create a function that take the age are return the appropiate drink based on the
 
 */
 
-function appropiateDrinks() {
+function appropiateDrinks(age) {
   // Your code
+  switch (true) {
+    case age <= 14:
+      return "drink fruit juice";
+      break;
+    case age <= 18:
+      return "drink soda";
+      break;
+    case age <= 21:
+      return "drink fruit-flavored beer";
+      break;
+    default:
+      return "drink throat-piercing vodka";
+      break;
+  }
 }
 
 /* 4. Add two numers or string
 
-Write a function that accepts two numbers or string and returns the sum of the numbers and concatenation of the strings.
-Twist is when user passes anything other than number, or string value you should be able to handle that.
+Write a function that accepts two numbers or string and returns the sum of the numbers 
+and concatenation of the strings.
+Twist is when user passes anything other than number, or string value you should be able to 
+handle that.
 
 - If both values are number add them
 - If both values are string concat theme
@@ -79,13 +117,20 @@ Twist is when user passes anything other than number, or string value you should
 
 */
 
-function sum() {
+function sum(val1, val2) {
   // Your code
+  if (typeof val1 === "number" && typeof val2 === "number") {
+    return val1 + val2;
+  } else if (typeof val1 === "string" && typeof val2 === "string") {
+    return val1 + " " + val2;
+  } else {
+    return `Enter valid values`;
+  }
 }
 
 // Function Test
 sum(2, 4); // 4
-sum('Arya', 'Stark'); // "Arya Stark"
-sum('Arya', 2); // Enter valid Values
+sum("Arya", "Stark"); // "Arya Stark"
+sum("Arya", 2); // Enter valid Values
 sum(null, 2); // Enter valid Values
 sum(undefined, 2); // Enter valid Values
