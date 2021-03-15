@@ -8,9 +8,11 @@
   * [ ] Add an additional argument to the function that takes the conversion rate of human to dog years.
 */
 
-function calculateDogAge() {
+function calculateDogAge(age, rate) {
   // Your code goes here
+  return age * rate;
 }
+calculateDogAge(4, 7);
 
 /*
 2. 🎖Write a function named calculateMoviesToWatch that:
@@ -19,30 +21,34 @@ function calculateDogAge() {
   * [ ] Return the total number of movie you will watch.
 */
 
-function calculateMoviesToWatch() {
+function calculateMoviesToWatch(age, num) {
   // Your code goes here
+  return (70 - age) * (72 * num);
 }
-
+calculateMoviesToWatch(25, 4);
 /*
 3. 🎖Create a function called celsiusToFahrenheit:
   * [ ] Accepts celsius temperature as argument.
   * [ ] Convert it to fahrenheit and return "NN°F is NN°C"
 */
 
-function celsiusToFahrenheit() {
+function celsiusToFahrenheit(celTemp) {
   // Your code goes here
+  let fer = (celTemp * 9) / 5 + 32;
+  return fer;
 }
-
+celsiusToFahrenheit(25);
 /*
 4. 🎖Create a function called fahrenheitToCelsius:
   * [ ] Accepts fahrenheit temperature as argument.
   * [ ] Convert it to celsius and return "NN°F is NN°C"
 */
 
-function celsiusToFahrenheit() {
+function celsiusToFahrenheit(ferTemp) {
   // Your code goes here
+  return ((ferTemp - 32) * 5) / 9;
 }
-
+celsiusToFahrenheit(30);
 /*
 5. 🎖 Write a function pow(n, x) that returns x in power n.
 
@@ -51,10 +57,24 @@ function celsiusToFahrenheit() {
   * [ ] If the value of n is below 0 return "The number below 1 is not allowed"
 */
 
-function pow() {
+function pow(n, x) {
   // Your code goes here
-}
+  let sum = 1;
 
+  if (n < 0) {
+    return "The number below 1 is not allowed";
+  } else {
+    if (n === 1) {
+      return 1;
+    } else {
+      for (let i = 1; i <= n; i++) {
+        sum = sum * x;
+      }
+      return sum;
+    }
+  }
+}
+pow(2, 3);
 // Test
 pow(3, 2); // 9
 pow(3, 3); // 27
@@ -62,38 +82,77 @@ pow(1, 100); // 1
 pow(-31, 2); // "The number below 1 is not allowed"
 
 /*
-6. 🎖Write a program that accepts two parameter a number n and a string with possible values of `sum` or `product`
-and return sum or product of 1,…,n. If user enters any other value than `sum` or `product` alert `Not a valid Input`.
+6. 🎖Write a program that accepts two parameter a number n and a string with possible
+ values of `sum` or `product`
+and return sum or product of 1,…,n. If user enters any other value than `sum` or `product` 
+alert `Not a valid Input`.
 */
 
-function sumOrProductOfN() {
+function sumOrProductOfN(n, operation) {
   // Your code goes here
+
+  if (operation === "sum") {
+    let ans = 0;
+    for (let i = 0; i <= n; i++) {
+      ans = ans + i;
+    }
+    return ans;
+  } else if (operation === "product") {
+    let prod = 1;
+    for (let i = 1; i <= n; i++) {
+      prod = prod * i;
+    }
+    return prod;
+  } else {
+    return `Not a valid Input`;
+  }
 }
 
-sumOrProductOfN(4, 'sum'); // 10
-sumOrProductOfN(4, 'product'); // 24
-sumOrProductOfN(4, 'hello'); // alert "Not a valid Input"
+sumOrProductOfN(4, "sum"); // 10
+sumOrProductOfN(4, "product"); // 24
+sumOrProductOfN(4, "hello"); // alert "Not a valid Input"
 
 /*
 6. 🎖Write a program that accepts a number n using argument and return the sum of the numbers 1 to n
 */
 
-function sumOfN() {
+function sumOfN(n) {
   // Your code goes here
+  let sum = 0;
+  for (let i = 1; i <= n; i++) {
+    sum += i;
+  }
+  return sum;
 }
 
 /*
-7. 🎖Modify the previous program such that only multiples of 5 or 7 are considered in the sum, e.g. n = 20 (5,7,10,14,15,20) 71
+7. 🎖Modify the previous program such that only multiples of 5 or 7 are 
+considered in the sum, e.g. n = 20 (5,7,10,14,15,20) 71
 */
 
 // Your code goes here
+function sumOfN(n) {
+  // Your code goes here
+  let sum = 0;
+  for (let i = 1; i <= n; i++) {
+    if (i % 5 === 0) {
+      sum += i;
+    }
+  }
+  return sum;
+}
 
 /*
 8. 🎖Write a function `min` that takes two arguments and returns their minimum.
 */
 
-function min() {
+function min(n1, n2) {
   // Your code goes here
+  if (n1 > n2) {
+    return n2;
+  } else {
+    return n1;
+  }
 }
 
 min(0, 10);
@@ -103,6 +162,8 @@ min(0, -10);
 9. 🎖Write a JavaScript function which accepts an argument and returns the type of the value.
 */
 
-function typeCheck() {
+function typeCheck(value) {
   // Your code goes here
+  return typeof value;
 }
+typeCheck("sadsad");
